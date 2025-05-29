@@ -1,0 +1,18 @@
+load("@gazelle//:def.bzl", "gazelle")
+load("@rules_go//go:def.bzl", "go_binary", "go_library")
+
+gazelle(name = "gazelle")
+
+go_binary(
+    name = "hello-go",
+    embed = [":hello-go_lib"],
+    visibility = ["//visibility:public"],
+)
+
+go_library(
+    name = "hello-go_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/hello-bazel/hello-go",
+    visibility = ["//visibility:private"],
+    deps = ["//hello-go/internal/handler"],
+)

@@ -5,4 +5,5 @@ go_library(
     srcs = ["hello.go"],
     importpath = "github.com/hello-bazel/hello-go/internal/handler",
     visibility = ["//hello-go:__subpackages__"],
+    deps = ["@com_github_go_fuego_fuego//:fuego"],
 )

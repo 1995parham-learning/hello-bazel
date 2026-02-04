@@ -1,6 +1,10 @@
 ---
-name: Continues Integration
-on: push
+name: Continuous Integration
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
   build:
@@ -15,5 +19,12 @@ jobs:
           disk-cache: ${{ github.workflow }}
           # Share repository cache between workflows.
           repository-cache: true
-      - run: bazel build //hello-py:hello
-      - run: bazel build //hello-go:hello-go
+
+      - name: Build Python
+        run: bazel build --config=ci //hello-py:hello
+
+      - name: Build Go
+        run: bazel build --config=ci //hello-go:hello-go
+
+      - name: Test Go
+        run: bazel test --config=ci //hello-go/...

@@ -4,6 +4,8 @@ go 1.25
 
 require github.com/go-fuego/fuego v0.19.0
 
+require golang.org/x/tools v0.29.0
+
 require (
 	github.com/gabriel-vasile/mimetype v1.4.13 // indirect
 	github.com/getkin/kin-openapi v0.133.0 // indirect

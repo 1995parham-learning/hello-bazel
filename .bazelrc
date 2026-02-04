@@ -1,0 +1,19 @@
+# Build settings
+build --compilation_mode=fastbuild
+
+# Test settings
+test --test_output=errors
+test --test_summary=short
+
+# Performance optimizations
+build --jobs=auto
+
+# Enable Bzlmod (already default in Bazel 7+)
+common --enable_bzlmod
+
+# Show timestamps in output
+common --show_timestamps
+
+# CI-specific settings
+build:ci --compilation_mode=opt
+test:ci --test_output=all

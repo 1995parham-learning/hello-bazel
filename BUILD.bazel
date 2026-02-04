@@ -1,0 +1,17 @@
+load("@gazelle//:def.bzl", "gazelle")
+
+# Run: bazel run //:gazelle
+# Generates and updates BUILD files for Go packages
+gazelle(name = "gazelle")
+
+# Run: bazel run //:gazelle-update-repos
+# Updates go_deps from go.mod files
+gazelle(
+    name = "gazelle-update-repos",
+    args = [
+        "-from_file=hello-go/go.mod",
+        "-to_macro=deps.bzl%go_dependencies",
+        "-prune",
+    ],
+    command = "update-repos",
+)

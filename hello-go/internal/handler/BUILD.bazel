@@ -1,4 +1,4 @@
-load("@rules_go//go:def.bzl", "go_library")
+load("@rules_go//go:def.bzl", "go_library", "go_test")
 
 go_library(
     name = "handler",
@@ -6,4 +6,13 @@ go_library(
     importpath = "github.com/hello-bazel/hello-go/internal/handler",
     visibility = ["//hello-go:__subpackages__"],
     deps = ["@com_github_go_fuego_fuego//:fuego"],
+)
+
+go_test(
+    name = "handler_test",
+    srcs = ["hello_test.go"],
+    deps = [
+        ":handler",
+        "@com_github_go_fuego_fuego//:fuego",
+    ],
 )

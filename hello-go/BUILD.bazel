@@ -1,12 +1,14 @@
-load("@gazelle//:def.bzl", "gazelle")
 load("@rules_go//go:def.bzl", "go_binary", "go_library", "nogo")
-
-gazelle(name = "gazelle")
 
 nogo(
     name = "nogo",
     vet = True,
     visibility = ["//visibility:public"],
+    deps = [
+        "@org_golang_x_tools//go/analysis/passes/nilness",
+        "@org_golang_x_tools//go/analysis/passes/shadow",
+        "@org_golang_x_tools//go/analysis/passes/unusedresult",
+    ],
 )
 
 go_binary(

@@ -1,0 +1,40 @@
+version: 2
+updates:
+  # Bazel dependencies (MODULE.bazel)
+  - package-ecosystem: bazel
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    commit-message:
+      prefix: "chore(deps)"
+    labels:
+      - dependencies
+      - bazel
+    open-pull-requests-limit: 5
+
+  # Go dependencies (go.mod)
+  - package-ecosystem: gomod
+    directory: /hello-go
+    schedule:
+      interval: weekly
+      day: monday
+    commit-message:
+      prefix: "chore(deps)"
+    labels:
+      - dependencies
+      - go
+    open-pull-requests-limit: 5
+
+  # GitHub Actions
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    commit-message:
+      prefix: "chore(deps)"
+    labels:
+      - dependencies
+      - github-actions
+    open-pull-requests-limit: 3

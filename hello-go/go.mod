@@ -1,6 +1,6 @@
 module github.com/hello-bazel/hello-go
 
-go 1.25
+go 1.25.6
 
 require github.com/go-fuego/fuego v0.19.0
 
